@@ -77,6 +77,13 @@ RSpec.describe RuboCop::Cop::Layout::SpaceBeforeFirstArg, :config do
       RUBY
     end
 
+    it 'accepts class declaration' do
+      expect_no_offenses(<<-RUBY.strip_indent)
+        class Application < Rails::Application
+        end
+      RUBY
+    end
+
     context 'when AllowForAlignment is true' do
       it 'accepts method calls with aligned first arguments' do
         expect_no_offenses(<<-RUBY.strip_indent)
